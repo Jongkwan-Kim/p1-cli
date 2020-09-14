@@ -1,3 +1,3 @@
 export const config = {
-    SERVER_URL: 'https://dev-api.mc.mocainc.com',
+    SERVER_URL: 'http://localhost:4500',
 };

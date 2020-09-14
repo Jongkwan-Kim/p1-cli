@@ -55,18 +55,17 @@ class SignupPage extends React.Component {
     }
 
     handleSignup() {
-        // let data = {
-        //     email: this.state.email,
-        //     password: this.state.password,
-        //     name: this.state.name,
-        //     phone: this.state.phone
-        // };
-        // try {
-        //     this.props.handleSignup(data);
-        // } catch(error) {
-        //     console.log(error)
-        // }
-
+        let data = {
+            email: this.state.email,
+            password: this.state.password,
+            name: this.state.name,
+            // phone: this.state.phone
+        };
+        try {
+            this.props.handleSignup(data);
+        } catch(error) {
+            console.log(error)
+        }
     }
 
     render() {
@@ -112,15 +111,15 @@ class SignupPage extends React.Component {
                                 handler={this.onChange}
                             />
                         </div>
-                        <div className={classes.inputDiv}>
-                            <Input
-                                id={'phone'}
-                                name={'phone'}
-                                value={phone}
-                                label={'Phone'}
-                                handler={this.onChange}
-                            />
-                        </div>
+                        {/*<div className={classes.inputDiv}>*/}
+                            {/*<Input*/}
+                                {/*id={'phone'}*/}
+                                {/*name={'phone'}*/}
+                                {/*value={phone}*/}
+                                {/*label={'Phone'}*/}
+                                {/*handler={this.onChange}*/}
+                            {/*/>*/}
+                        {/*</div>*/}
                         <div className={classes.inputDiv}>
                             <Button
                                 label={'Sign Up'}
@@ -138,9 +137,9 @@ export const mapStateToProps = state => ({
     authenticated: state.auth.authenticated
 });
 export const mapDispatchToProps = dispatch => ({
-    // handleSignup(data) {
-    //     dispatch(signup(data));
-    // }
+    handleSignup(data) {
+        dispatch(register(data));
+    }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SignupPage));

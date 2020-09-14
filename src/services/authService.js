@@ -8,9 +8,9 @@ export const authService = {
 };
 
 const api = {
-    register: ['post', '/register'],
-    login: ['post', '/login'],
-    logout: ['post', '/logout']
+    register: ['post', '/api/register'],
+    login: ['post', '/api/login'],
+    logout: ['get', '/api/logout']
 };
 
 
@@ -20,7 +20,7 @@ function register(data) {
         email: data.email,
         password: data.password,
         name: data.name,
-        phone: data.phone
+        // phone: data.phone
     };
 
     let requestConfig = serviceConfig.makeRequestConfig(method, url, body);
@@ -38,7 +38,7 @@ function login(data) {
     return axios.request(requestConfig);
 }
 
-function logout() {
+function logout(data) {
     let [method, url] = api.logout;
 
     let requestConfig = serviceConfig.makeRequestConfig(method, url);

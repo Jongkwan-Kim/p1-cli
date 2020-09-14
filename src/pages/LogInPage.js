@@ -54,16 +54,16 @@ class LoginPage extends React.Component {
     }
 
     handleSignin() {
-        history.push(CONSTANT.URL.DASH_BOARD)
-    //     let data = {
-    //         email: this.state.email,
-    //         password: this.state.password
-    //     };
-    //     try {
-    //         this.props.handleSignin(data);
-    //     } catch(error) {
-    //         console.log(error)
-    //     }
+        // history.push(CONSTANT.URL.DASH_BOARD)
+        let data = {
+            email: this.state.email,
+            password: this.state.password
+        };
+        try {
+            this.props.handleSignin(data);
+        } catch(error) {
+            console.log(error)
+        }
     }
 
     render() {
@@ -120,9 +120,9 @@ export const mapStateToProps = state => ({
     authenticated: state.auth.authenticated
 });
 export const mapDispatchToProps = dispatch => ({
-    // handleSignin(data) {
-    //     dispatch(signin(data));
-    // }
+    handleSignin(data) {
+        dispatch(login(data));
+    }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(LoginPage));

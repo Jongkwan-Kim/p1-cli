@@ -12,13 +12,16 @@ export function auth(state = initialState.user, action) {
                 // token: accessToken
             };
         case types.auth.LOGIN_SUCCESS:
-            const { email, name, accessToken } = action.payload;
+            console.log(action)
+            const { id, email, name, token, role } = action.payload;
             return {
                 ...state,
                 authenticated: true,
+                id: id,
                 email: email,
                 name: name,
-                token: accessToken
+                token: token,
+                role: role
             };
         case types.auth.LOGOUT_SUCCESS:
             return initialState.user;

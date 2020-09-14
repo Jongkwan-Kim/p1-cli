@@ -5,7 +5,7 @@ import CONSTANT from '../constant';
 
 async function doRegister(data) {
     let res = await authService.register(data);
-    if (res.data.status === 200) {
+    if (res.status === 200) {
         history.push(CONSTANT.URL.LOG_IN);
         return res.data.record;
     } else {
@@ -20,9 +20,9 @@ export const register = (data) => ({
 
 async function doLogin(data) {
     let res = await authService.login(data);
-    if (res.data.status === 200) {
+    if (res.status === 200) {
         history.push(CONSTANT.URL.DASH_BOARD);
-        return res.data.record;
+        return res.data;
     } else {
         throw res;
     }
@@ -31,4 +31,19 @@ async function doLogin(data) {
 export const login = (data) => ({
     type: types.auth.LOGIN,
     payload: doLogin(data)
+});
+
+async function doLogout(data) {
+    let res = await authService.logout(data);
+    if (res.status === 200) {
+        history.push(CONSTANT.URL.ROOT);
+        return res.data;
+    } else {
+        throw res;
+    }
+}
+
+export const logout = (data) => ({
+    type: types.auth.LOGOUT,
+    payload: doLogout(data)
 });
