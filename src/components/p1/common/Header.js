@@ -2,10 +2,10 @@ import React from 'react';
 import { AppBar, Toolbar, Button, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { withStyles } from '@material-ui/styles';
-import { history } from '../../utils'
-import CONSTANT from '../../constant';
+import { history } from '../../../utils/index'
+import CONSTANT from '../../../constant';
 import { connect } from 'react-redux';
-import {login, logout} from '../../actions/auth';
+import {login, logout} from '../../../actions/auth';
 
 const styles = theme => ({
     appBar: {
@@ -19,16 +19,20 @@ class Header extends React.Component {
         this.handleClickLogout = this.handleClickLogout.bind(this);
     }
 
+    doLogout = async(params) => {
+        try {
+            await this.props.handleLogout(params);
+        } catch(error) {
+            console.log(error)
+        }
+    }
+
     handleClickLogout() {
         let data = {
             id: this.props.userId,
             token: this.props.token
         };
-        try {
-            this.props.handleLogout(data);
-        } catch(error) {
-            console.log(error)
-        }
+       this.doLogout(data);
     }
 
     render() {
@@ -51,8 +55,8 @@ export const mapStateToProps = state => ({
     token: state.auth.token
 });
 export const mapDispatchToProps = dispatch => ({
-    handleLogout(data) {
-        dispatch(logout(data));
+    handleLogout: async (data) => {
+        await dispatch(logout(data));
     }
 });
 

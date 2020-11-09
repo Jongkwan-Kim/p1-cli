@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { register } from '../actions/auth';
 import CONSTANT from "../constant";
 import logo from '../images/logo.png'
+import { history } from "../utils";
 
 const styles = theme => ({
     container: {
@@ -54,6 +55,15 @@ class SignupPage extends React.Component {
         });
     }
 
+    doRegister = async (params) => {
+        try {
+            await this.props.handleSignup(params);
+            history.push(CONSTANT.URL.LOG_IN);
+        } catch(error) {
+            console.log(error);
+        }
+    }
+
     handleSignup() {
         let data = {
             email: this.state.email,
@@ -61,11 +71,7 @@ class SignupPage extends React.Component {
             name: this.state.name,
             // phone: this.state.phone
         };
-        try {
-            this.props.handleSignup(data);
-        } catch(error) {
-            console.log(error)
-        }
+        this.doRegister(data);
     }
 
     render() {
@@ -137,8 +143,8 @@ export const mapStateToProps = state => ({
     authenticated: state.auth.authenticated
 });
 export const mapDispatchToProps = dispatch => ({
-    handleSignup(data) {
-        dispatch(register(data));
+    handleSignup: async(data) => {
+        await dispatch(register(data));
     }
 });
 

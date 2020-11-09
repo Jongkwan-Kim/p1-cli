@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from "react-router-dom";
 import CONSTANT from '../../constant';
 
-import P1Template from '../../components/p1/Template'
+import P1Template from '../../components/p1/common/Template'
 import DashBoardPage from './DashBoardPage';
 import MBookPage from './MBookPage';
 import UserPage from './UserPage';

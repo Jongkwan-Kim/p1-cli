@@ -24,7 +24,8 @@ class APIInterceptor extends React.Component {
         );
         this.responseInterceptor = axios.interceptors.response.use(
             res => {
-                    return res;
+                console.log(res)
+                return res;
             },
             error => {
                 console.log(error)

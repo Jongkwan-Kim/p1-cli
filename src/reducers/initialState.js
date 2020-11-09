@@ -4,5 +4,8 @@ export default {
         email: null,
         name: null,
         token: null
+    },
+    setting: {
+        categoryList: []
     }
 };

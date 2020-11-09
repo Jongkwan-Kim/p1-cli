@@ -1,8 +1,8 @@
 import React from 'react';
 import { List, ListItem, ListItemIcon } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
-import { history } from '../../utils'
-import CONSTANT from '../../constant';
+import { history } from '../../../utils/index'
+import CONSTANT from '../../../constant';
 
 import CalendarViewDayOutlinedIcon from '@material-ui/icons/CalendarViewDayOutlined';
 import AssignmentIndOutlinedIcon from '@material-ui/icons/AssignmentIndOutlined';

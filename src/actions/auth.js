@@ -1,12 +1,11 @@
 import * as types from './types';
 import {authService} from "../services/authService";
-import { history } from '../utils';
 import CONSTANT from '../constant';
 
 async function doRegister(data) {
     let res = await authService.register(data);
-    if (res.status === 200) {
-        history.push(CONSTANT.URL.LOG_IN);
+    console.log(res)
+    if (res.data.success === true) {
         return res.data.record;
     } else {
         throw res;
@@ -20,8 +19,7 @@ export const register = (data) => ({
 
 async function doLogin(data) {
     let res = await authService.login(data);
-    if (res.status === 200) {
-        history.push(CONSTANT.URL.DASH_BOARD);
+    if (res.data.success === true) {
         return res.data;
     } else {
         throw res;
@@ -35,8 +33,7 @@ export const login = (data) => ({
 
 async function doLogout(data) {
     let res = await authService.logout(data);
-    if (res.status === 200) {
-        history.push(CONSTANT.URL.ROOT);
+    if (res.data.success === true) {
         return res.data;
     } else {
         throw res;
