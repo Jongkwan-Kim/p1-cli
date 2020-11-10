@@ -60,15 +60,15 @@ class SettingPage extends React.Component {
     getTab(tabId) {
         switch (tabId) {
             case CONSTANT.MENU.SETTING.GENERAL:
-                return <TabGeneral />
+                return <TabGeneral />;
             case CONSTANT.MENU.SETTING.DASH_BOARD:
-                return <TabDashBoard />
+                return <TabDashBoard />;
             case CONSTANT.MENU.SETTING.M_BOOK:
-                return <TabMBook />
+                return <TabMBook />;
             case CONSTANT.MENU.SETTING.USER:
-                return <TabUser />
+                return <TabUser />;
             default:
-                return <TabGeneral />
+                return <TabGeneral />;
         }
     }
 

@@ -23,7 +23,7 @@ const CategoryTable = ({ type, dataList, handleAllCheckBox, handleCheckBox, remo
     return (
         <TableContainer component={Paper} style={{borderRadius: '0'}}>
             <Table aria-label="simple table">
-                <TableHead style={{backgroundColor: '#1db4b3'}}>
+                <TableHead stickyHeader >
                     <TableRow>
                         <TableCell padding="checkbox" >
                             <Checkbox
@@ -39,7 +39,7 @@ const CategoryTable = ({ type, dataList, handleAllCheckBox, handleCheckBox, remo
                         }
                     </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody style={{height: '500px', overflowY: 'scroll'}}>
                     {
                         dataList.map((row, index) => (
                             <TableRow

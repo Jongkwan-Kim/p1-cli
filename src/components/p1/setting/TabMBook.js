@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { createCategory, searchCategory } from '../../../actions/setting';
 import {isEmpty} from 'lodash';
 import Table from './Table';
+import Select from '../../common/Select';
 const styles = theme => ({
     titleDiv: {
         padding: '10px',
@@ -77,6 +78,10 @@ const TabMBook = ({ classes, searchCategory, createCategory, categoryList }) => 
         }
     };
 
+    const handleSaveSub = () => {
+
+    }
+
     useEffect(() => {
         searchCategory();
     }, []);
@@ -121,16 +126,58 @@ const TabMBook = ({ classes, searchCategory, createCategory, categoryList }) => 
                             </div>
                         </div>
                     </Grid>
+                    {/*<Grid xs={12} className={classes.subTitleDiv}>*/}
+                        {/*List*/}
+                    {/*</Grid>*/}
+                    {/*<Grid xs={12}>*/}
+                        {/*<Table*/}
+                            {/*type={'category'}*/}
+                            {/*dataList={categorise}*/}
+                        {/*/>*/}
+                    {/*</Grid>*/}
+                </Grid>
+
+                <Grid container alignItems={'center'}>
                     <Grid xs={12} className={classes.subTitleDiv}>
-                        List
+                        Sub Category
                     </Grid>
                     <Grid xs={12}>
-                        <Table
-                            type={'category'}
-                            dataList={categorise}
-                        />
+                        <div className={classes.fieldWrap}>
+                            <div className={classes.nameInputDiv}>
+                                <Input
+                                    name='subName'
+                                    value={values.name}
+                                    handler={handleChange}
+                                    label={'Name'}
+                                />
+                            </div>
+                            <div className={classes.desInputDiv}>
+                                <Input
+                                    name='subDes'
+                                    value={values.des}
+                                    handler={handleChange}
+                                    label={'Description'}
+                                />
+                            </div>
+                            <div className={classes.btnDiv}>
+                                <Button
+                                    label={'ADD'}
+                                    handler={handleSaveSub}
+                                />
+                            </div>
+                        </div>
                     </Grid>
+                    {/*<Grid xs={12} className={classes.subTitleDiv}>*/}
+                    {/*List*/}
+                    {/*</Grid>*/}
+                    {/*<Grid xs={12}>*/}
+                    {/*<Table*/}
+                    {/*type={'category'}*/}
+                    {/*dataList={categorise}*/}
+                    {/*/>*/}
+                    {/*</Grid>*/}
                 </Grid>
+
             </Grid>
         </Grid>
     )
